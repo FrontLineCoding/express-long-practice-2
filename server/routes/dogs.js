@@ -34,8 +34,8 @@ const validateDogId = (req, res, next) => {
   if (!dog) {
     const err = new Error("Couldn't find dog with that dogId")
     err.statusCode = 404;
-    throw err;
-    // return next(err); // alternative to throwing it
+    // throw err;
+    return next(err); // alternative to throwing it
   }
   next();
 }
