@@ -1,5 +1,7 @@
 // ------------------------------  SERVER DATA ------------------------------  
 
+
+
 let nextDogId = 1;
 function getNewDogId() {
   const newDogId = nextDogId;
@@ -87,6 +89,9 @@ const deleteDog = (req, res) => {
 const express = require("express");
 
 const router = express.Router();
+const foodRouter = require('./dog-foods');
+
+router.use('/dogs/:dogId/foods', foodRouter);
 
 router.get('/', (req, res) => {
   getAllDogs(req, res)

@@ -59,4 +59,12 @@ const createFood = (req, res) => {
 
 // ------------------------------  ROUTER ------------------------------  
 
-// Your code here
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  getFoodsByDogId(req, res);
+})
+
+
+module.exports = router;
