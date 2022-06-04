@@ -88,16 +88,24 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get('/dogs', (req, res) => {
+router.get('/', (req, res) => {
   getAllDogs(req, res)
 });
 
-router.get('/dogs/:dogId', getDogById);
+router.get('/:dogId', validateDogId, (req, res) => {
+  getDogById(req, res);
+});
 
-router.post('/dogs', createDog);
+router.post('/', validateDogInfo, (req, res) => {
+  createDog(req, res);
+});
 
-router.put('/dogs/:dogId', updateDog);
+router.put('/:dogId', validateDogId, validateDogInfo, (req, res) => {
+  updateDog(req, res);
+});
 
-router.delete('/dogs/:dogId', deleteDog)
+router.delete('/:dogId', validateDogId, (req, res) => {
+  deleteDog(req, res);
+})
 
-module.exports = {router};
+module.exports = router;
